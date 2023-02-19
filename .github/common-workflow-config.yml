@@ -1,0 +1,4 @@
+public_artifactory: true
+os: ubuntu-22.04
+compiler: clang-14
+cmake-version: 3.22.6

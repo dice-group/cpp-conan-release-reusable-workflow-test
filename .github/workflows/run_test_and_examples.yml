@@ -3,7 +3,7 @@ on: [ push ]
 
 jobs:
   publish-conan-branch-package:
-    uses: dice-research/cpp-conan-release-reusable-workflow/.github/workflows/publish-conan-branch-package.yml@feature/initial_version
+    uses: dice-group/cpp-conan-release-reusable-workflow/.github/workflows/publish-conan-branch-package.yml@feature/initial_version
     with:
       public_artifactory: true
       os: ubuntu-22.04

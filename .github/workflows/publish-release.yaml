@@ -9,7 +9,7 @@ on:
 
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: publish-release-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   publish-conan-branch-package:

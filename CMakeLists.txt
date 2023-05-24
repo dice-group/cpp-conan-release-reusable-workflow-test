@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 project(cpp-conan-release-reusable-workflow-test
-        VERSION 0.11.3
+        VERSION 0.11.4
         DESCRIPTION "For testing how things need to be set up."
         )
 

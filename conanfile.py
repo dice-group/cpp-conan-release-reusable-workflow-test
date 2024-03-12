@@ -4,7 +4,7 @@ import re
 from conan import ConanFile
 from conan.tools.cmake import CMake
 
-from conan.tools.files import copy, load
+from conan.tools.files import copy, load, rmdir
 
 
 class ReusableWorkflowTest(ConanFile):
@@ -13,7 +13,7 @@ class ReusableWorkflowTest(ConanFile):
     package_type = "header-library"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
-    exports_sources = "include/*"
+    exports_sources = "include/*", "CMakeLists.txt", "cmake/*"
     no_copy_source = True
 
     generators = "CMakeDeps", "CMakeToolchain"
@@ -30,5 +30,16 @@ class ReusableWorkflowTest(ConanFile):
 
     def package(self):
         cmake = CMake(self)
-        cmake.configure()
-        copy(self, "*.hpp", self.source_folder, self.package_folder)
+        cmake.configure(variables={})
+        cmake.install()
+
+        for dir in "lib", "res", "share":
+            rmdir(self, os.path.join(self.package_folder, dir))
+
+    def package_info(self):
+        self.cpp_info.bindirs = []
+        self.cpp_info.libdirs = []
+
+        self.cpp_info.set_property("cmake_find_mode", "both")
+        self.cpp_info.set_property("cmake_target_name", f"{self.name}::{self.name}")
+        self.cpp_info.set_property("cmake_file_name", self.name)

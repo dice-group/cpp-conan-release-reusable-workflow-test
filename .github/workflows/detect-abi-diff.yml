@@ -13,7 +13,7 @@ jobs:
       os: ubuntu-22.04
       compiler: clang-16
       cmake-version: 3.22.6
-      conan-version: 1.60.1
+      conan-version: 1.62.0
       base-branch: testing/abi-version-detection-base
       search-path: include/abi-relevant-file.hpp
       abi-version-header: include/cpp-conan-release-reusable-workflow-test.hpp

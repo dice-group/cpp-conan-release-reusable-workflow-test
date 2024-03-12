@@ -1,0 +1,23 @@
+name: Publish Conan branch package
+
+on: [ push ]
+
+concurrency:
+  group: detect-abi-diff-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect-abi-diff:
+    uses: dice-group/cpp-conan-release-reusable-workflow/.github/workflows/abi-diff.yml@feature/abi-diff-detector
+    with:
+      os: ubuntu-22.04
+      compiler: clang-16
+      cmake-version: 3.22.6
+      conan-version: 1.60.1
+      base-branch: testing/abi-version-detection-base
+      search-path: include/abi-relevant-file.hpp
+      abi-version-header: include/cpp-conan-release-reusable-workflow-test.hpp
+      abi-version-const: abi_version
+    secrets:
+      CONAN_USER: ${{ secrets.CONAN_USER }}
+      CONAN_PW: ${{ secrets.CONAN_PW }}

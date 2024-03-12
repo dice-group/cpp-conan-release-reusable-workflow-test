@@ -4,7 +4,7 @@ import re
 from conan import ConanFile
 from conan.tools.cmake import CMake
 
-from conan.tools.files import load, rmdir, copy
+from conan.tools.files import copy, load
 
 
 class ReusableWorkflowTest(ConanFile):

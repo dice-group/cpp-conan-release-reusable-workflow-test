@@ -1,1 +1,1 @@
-inline long x = 5;
+inline int x = 5;

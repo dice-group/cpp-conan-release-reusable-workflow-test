@@ -1,4 +1,4 @@
-name: Publish Conan branch package
+name: Detect ABI diff
 
 on: [ push ]
 

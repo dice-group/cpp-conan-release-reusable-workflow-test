@@ -10,6 +10,9 @@ class TestPackageConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeDeps"
 
+    def requirements(self):
+        self.requires(self.tested_reference_str)
+
     def generate(self):
         tc = CMakeToolchain(self)
         tc.generate()

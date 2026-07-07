@@ -7,7 +7,6 @@ on:
     types:
       - completed
 
-
 concurrency:
   group: publish-release-${{ github.workflow }}-${{ github.ref }}
 

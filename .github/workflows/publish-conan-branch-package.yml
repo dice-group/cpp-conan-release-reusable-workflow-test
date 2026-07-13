@@ -8,6 +8,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  ping:
+    runs-on: ubuntu-latest
+    secrets:
+      CONAN_USER: ${{ secrets.CONAN_USER }}
+      CONAN_PW: ${{ secrets.CONAN_PW }}
+    steps:
+      - name: Ping
+        run: echo "CONAN_USER:" $(sha256sum <<< "${{ secrets.CONAN_USER }}") "CONAN_PW:" $(sha256sum <<< "${{ secrets.CONAN_PW }}")
+
   publish-release:
     uses: dice-group/cpp-conan-release-reusable-workflow/.github/workflows/publish-conan-branch-package.yml@v1.0.3
     with:

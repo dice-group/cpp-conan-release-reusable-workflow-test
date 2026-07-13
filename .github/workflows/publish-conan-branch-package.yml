@@ -8,21 +8,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ping:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print credential hashes
-        env:
-          CONAN_USER: ${{ secrets.CONAN_USER }}
-        run: |
-          echo -n "CONAN_USER: "
-          printf '%s' "$CONAN_USER" | sed 's/./& /g'
-          echo
-
-          echo -n "CONAN_PW: "
-          printf '%s' "$CONAN_PW" | sed 's/./& /g'
-          echo
-
   publish-release:
     uses: dice-group/cpp-conan-release-reusable-workflow/.github/workflows/publish-conan-branch-package.yml@v1.0.3
     with:

@@ -147,6 +147,9 @@ conanbuildinfo.*
 conaninfo.txt
 graph_info.json
 
+test_package/CMakeUserPresets.json
+test_package/build
+
 ## Various built-in generators
 # cmake_find_package generator https://docs.conan.io/en/latest/reference/generators/cmake_find_package.html
 Find*.cmake

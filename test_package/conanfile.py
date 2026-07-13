@@ -6,9 +6,10 @@ from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout
 
 required_conan_version = ">=2.0.0"
 
+
 class TestPackageConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeDeps"
+    generators = "CMakeDeps", "CMakeToolchain"
 
     def requirements(self):
         self.requires(self.tested_reference_str)

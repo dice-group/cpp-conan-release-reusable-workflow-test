@@ -2,17 +2,20 @@ import os
 
 from conan import ConanFile
 from conan.tools.build import can_run
-from conan.tools.cmake import CMake, cmake_layout
+from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout
 
-required_conan_version = ">=1.43.0"
-
+required_conan_version = ">=2.0.0"
 
 class TestPackageConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeDeps", "CMakeToolchain"
+    generators = "CMakeDeps"
 
     def requirements(self):
         self.requires(self.tested_reference_str)
+
+    def generate(self):
+        tc = CMakeToolchain(self)
+        tc.generate()
 
     def layout(self):
         cmake_layout(self)

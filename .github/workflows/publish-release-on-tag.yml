@@ -14,7 +14,6 @@ jobs:
       public_artifactory: true
       os: ubuntu-24.04
       compiler: clang-14
-      conan-version: 2.30
       use-tag: true
     secrets:
       CONAN_CICD_USERNAME: ${{ secrets.CONAN_CICD_USERNAME }}
